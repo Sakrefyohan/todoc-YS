@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Todoc</string>
+
+    <string name="label_action_filter">Filter</string>
+
+    <string name="sort_alphabetical">A -&gt; Z</string>
+    <string name="sort_alphabetical_invert">Z -&gt; A</string>
+    <string name="sort_oldest_first">Les plus anciens d’abord</string>
+    <string name="sort_recent_first">Les plus récents d’abord</string>
+
+    <string name="add_task">Ajouter une tâche</string>
+    <string name="add">Ajouter</string>
+
+    <string name="no_task">Tu n’as aucune tâche à traiter</string>
+
+    <string name="task_name_hint">Nom de la tâche</string>
+
+    <string name="empty_task_name">Le nom de la tâche doit être renseigné</string>
+
+    <!-- STORAGE STRING -->
+
+    <string name="saved">Enregistré</string>
+    <string name="error_happened">Une erreur s\'est produite !</string>
+    <string name="external_storage_impossible_create_file">Impossible de créer un fichier sur l\'espace de stockage externe</string>
+
+    <string name="question_storage_writing">Dans quel stockage souhaitez-vous écrire ?</string>
+    <string name="question_storage_writing_external">Externe</string>
+    <string name="question_storage_writing_internal">Interne</string>
+
+    <string name="question_storage_privacy">Quel niveau de confidentialité souhaitez-vous ?</string>
+    <string name="question_storage_privacy_private">Privé</string>
+    <string name="question_storage_privacy_public">Public</string>
+
+    <string name="question_storage_cache">Souhaitez-vous stocker le fichier en cache ?</string>
+    <string name="question_storage_cache_yes">Oui</string>
+    <string name="question_storage_cache_no">Non</string>
+</resources>
