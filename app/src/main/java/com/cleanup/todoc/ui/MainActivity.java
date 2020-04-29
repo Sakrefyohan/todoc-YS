@@ -25,12 +25,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-/**
- * <p>Home activity of the application which is displayed when the user opens the app.</p>
- * <p>Displays the list of tasks.</p>
- *
- * @author Gaëtan HERFRAY
- */
+
 public class MainActivity extends AppCompatActivity implements TasksAdapter.DeleteTaskListener {
     /**
      * List of all projects available in the application
@@ -87,6 +82,13 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     @SuppressWarnings("NullableProblems")
     @NonNull
     private TextView lblNoTasks;
+
+    /**
+     * 1 - File Purpose Storage
+     * */
+
+    private static final String FILENAME = "task.txt";
+    private static final String FOLDERNAME = "Todoc";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -182,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
                 dialogInterface.dismiss();
             }
         }
-        // If dialog is aloready closed
+        // If dialog is already closed
         else {
             dialogInterface.dismiss();
         }
@@ -242,8 +244,6 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     }
 
     /**
-     * Returns the dialog allowing the user to create a new task.
-     *
      * @return the dialog allowing the user to create a new task
      */
     @NonNull
@@ -320,4 +320,6 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
          */
         NONE
     }
+
+
 }

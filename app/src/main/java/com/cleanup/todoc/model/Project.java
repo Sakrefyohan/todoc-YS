@@ -10,20 +10,12 @@ import androidx.annotation.Nullable;
  * @author Gaëtan HERFRAY
  */
 public class Project {
-    /**
-     * The unique identifier of the project
-     */
+
     private final long id;
 
-    /**
-     * The name of the project
-     */
     @NonNull
     private final String name;
 
-    /**
-     * The hex (ARGB) code of the color associated to the project
-     */
     @ColorInt
     private final int color;
 
