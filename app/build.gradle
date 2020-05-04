@@ -41,5 +41,8 @@ dependencies {
 
     implementation "android.arch.lifecycle:extensions:1.1.1"
 
+    androidTestImplementation 'androidx.test:core:1.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
     androidTestCompile "android.arch.core:core-testing:1.1.1"
 }

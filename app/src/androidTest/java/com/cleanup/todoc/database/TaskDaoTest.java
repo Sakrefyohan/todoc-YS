@@ -1,12 +1,16 @@
 package com.cleanup.todoc.database;
 
 
+import android.content.Context;
 import android.view.contentcapture.DataRemovalRequest;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.room.Room;
-import androidx.test.InstrumentationRegistry;
+//import androidx.test.InstrumentationRegistry;
+
+import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+
 
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
@@ -21,7 +25,6 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 @RunWith(AndroidJUnit4.class)
 public class TaskDaoTest {
@@ -43,8 +46,9 @@ public class TaskDaoTest {
 
     @Before
     public void initDb() throws Exception {
-        //todo: check deprecated params
-        this.mDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
+        //todo: check deprecated params --DONE
+        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        this.mDatabase = Room.inMemoryDatabaseBuilder(context,
                TodocDatabase.class)
                 .allowMainThreadQueries()
                 .build();
