@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
@@ -18,30 +19,30 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.cleanup.todoc.R;
+import com.cleanup.todoc.injection.Injection;
+import com.cleanup.todoc.injection.ViewModelFactory;
 import com.cleanup.todoc.model.Project;
 import com.cleanup.todoc.model.Task;
+import com.cleanup.todoc.viewmodel.TaskViewModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements TasksAdapter.DeleteTaskListener {
     /**
      * List of all projects available in the application
      */
-    private final Project[] allProjects = Project.getAllProjects();
+    private List<Project> allProjects;
 
-    /**
-     * List of all current tasks of the application
-     */
-    @NonNull
-    private final ArrayList<Task> tasks = new ArrayList<>();
+    private TaskViewModel mTaskViewModel;
 
     /**
      * The adapter which handles the list of tasks
      */
-    private final TasksAdapter adapter = new TasksAdapter(tasks, this);
+    private final TasksAdapter adapter = new TasksAdapter(new ArrayList<>(), this);
 
     /**
      * The sort method to be used to display tasks
@@ -83,13 +84,6 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     @NonNull
     private TextView lblNoTasks;
 
-    /**
-     * 1 - File Purpose Storage
-     * */
-
-    private static final String FILENAME = "task.txt";
-    private static final String FOLDERNAME = "Todoc";
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +102,24 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
                 showAddTaskDialog();
             }
         });
+
+        configureViewModel();
+        getProjects();
+        getTasks();
     }
+
+    private void configureViewModel() {
+        ViewModelFactory viewModelFactory = Injection.provideViewModelFactory(this);
+        mTaskViewModel = ViewModelProviders.of(this, viewModelFactory).get(TaskViewModel.class);
+        mTaskViewModel.init();
+    }
+
+    private void getProjects() { mTaskViewModel.getProjects().observe(this, this::updateProjects); }
+
+    private void updateProjects(List<Project> projects) { allProjects = projects; }
+
+    private void getTasks() { mTaskViewModel.getTasks().observe(this, this::updateTasks); }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -130,15 +141,13 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             sortMethod = SortMethod.RECENT_FIRST;
         }
 
-        updateTasks();
-
+        getTasks();
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onDeleteTask(Task task) {
-        tasks.remove(task);
-        updateTasks();
+        mTaskViewModel.deleteTask(task);
     }
 
     /**
@@ -164,12 +173,8 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
             }
             // If both project and name of the task have been set
             else if (taskProject != null) {
-
-                long id = (long) (Math.random() * 50000);
-
-
+                //The id is autogenerate in the database
                 Task task = new Task(
-
                         taskProject.getId(),
                         taskName,
                         new Date().getTime()
@@ -210,14 +215,13 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
      * @param task the task to be added to the list
      */
     private void addTask(@NonNull Task task) {
-        tasks.add(task);
-        updateTasks();
+        mTaskViewModel.createTask(task);
     }
 
     /**
      * Updates the list of tasks in the UI
      */
-    private void updateTasks() {
+    private void updateTasks(List<Task> tasks) {
         if (tasks.size() == 0) {
             lblNoTasks.setVisibility(View.VISIBLE);
             listTasks.setVisibility(View.GONE);
@@ -244,6 +248,8 @@ public class MainActivity extends AppCompatActivity implements TasksAdapter.Dele
     }
 
     /**
+     * Returns the dialog allowing the user to create a new task.
+     *
      * @return the dialog allowing the user to create a new task
      */
     @NonNull
