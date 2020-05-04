@@ -1,0 +1,22 @@
+@startuml
+
+ProjectDAO *-- TaskDao
+
+interface ProjectDAO {
+LiveData<List<Project>> getProjects()
+void insertProject(Project... pProjects)
+}
+
+interface TaskDao{
+    LiveData<List<Task>> getTasks()
+    long insertTask(Task pTask)
+    int updateTask(Task pTask)
+    int deleteTask(Task pTask)
+
+}
+
+
+
+
+
+@enduml

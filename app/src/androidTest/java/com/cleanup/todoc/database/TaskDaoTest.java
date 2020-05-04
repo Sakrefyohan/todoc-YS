@@ -43,6 +43,7 @@ public class TaskDaoTest {
 
     @Before
     public void initDb() throws Exception {
+        //todo: check deprecated params
         this.mDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(),
                TodocDatabase.class)
                 .allowMainThreadQueries()
@@ -59,14 +60,10 @@ public class TaskDaoTest {
         mDatabase.TaskDao().insertTask(mTaskTest1);
 
         mTasks = LiveDataTestUtil.getValue(mDatabase.TaskDao().getTasks());
-        assertFalse(mTasks.isEmpty());
         assertEquals(1, mTasks.size());
 
         assertEquals(mTaskTest1.getName(),mTasks.get(0).getName());
-        assertEquals("Projet Tartampion",mTaskTest1.getProject().getName());
         assertEquals(mProjects.get(0).getName(),mTaskTest1.getProject().getName());
-
-        mDatabase.TaskDao().deleteTask(mTasks.get(0));
     }
 
     @Test
@@ -75,14 +72,12 @@ public class TaskDaoTest {
         mDatabase.TaskDao().insertTask(mTaskTest2);
 
         mTasks = LiveDataTestUtil.getValue(mDatabase.TaskDao().getTasks());
-        assertFalse(mTasks.isEmpty());
+
         assertEquals(2,mTasks.size());
 
         assertEquals(mTaskTest1.getName(),mTasks.get(0).getName());
         assertEquals(mTaskTest2.getName(),mTasks.get(1).getName());
-        assertEquals("Projet Tartampion", mTaskTest1.getProject().getName());
         assertEquals(mProjects.get(0).getName(), mTaskTest1.getProject().getName());
-        assertEquals("Projet Lucidia", mTaskTest2.getProject().getName());
         assertEquals(mProjects.get(1).getName(), mTaskTest2.getProject().getName());
 
         mDatabase.TaskDao().deleteTask(mTasks.get(0));
@@ -90,10 +85,10 @@ public class TaskDaoTest {
         assertEquals(1,mTasks.size());
 
         assertEquals(mTaskTest2.getName(),mTasks.get(0).getName());
-        assertEquals("Projet Lucidia", mTaskTest2.getProject().getName());
         assertEquals(mProjects.get(1).getName(), mTaskTest2.getProject().getName());
-
-        mDatabase.TaskDao().deleteTask(mTasks.get(0));
-
     }
+
+    //todo: finish checkProject Test
+    @Test
+    public void checkProject(){}
 }
