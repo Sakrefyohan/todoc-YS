@@ -15,8 +15,119 @@ interface TaskDao{
 
 }
 
+class TodocDatabase{
+    + {abstract} TaskDao TaskDao {}
+    + {abstract} ProjectDao ProjectDAO {}
+    + {static} TodocDatabase getInstance(Context context) {}
+    - {static} Callback prepopulateDatabase(){}
+}
 
+class Injection{
+    + {static} ProjectDataRepository provideProjectDataSource(Context context) {}
+    + {static} TaskDataRepository provideTaskDataSource(Context context) {}
+    + {static} Executor provideExecutor() {}
+    + {static} ViewModelFactory provideViewModelFactory(Context context) {}
+}
 
+class ViewModelFactory{
+    +  ViewModelFactory(ProjectDataRepository mProjectDataSource, TaskDataRepository mTaskDataSource, Executor mExecutor){}
+    + <T extends ViewModel> T create(Class<T> modelClass) {}
+}
 
+class Project{
+    - final long id;
+    - final String name;
+    - final int color;
+    + Project(long id, @NonNull String name, @ColorInt int color) {}
+    + {static} Project[] getAllProjects() {}
+    + {static} Project getProjectById(long id) {}
+    + long getId(){}
+    + String getName() {}
+}
+class Task{
+    - long id
+    - long projectId
+    - String name
+    - long creationTimestamp
+    + Task(long projectId, @NonNull String name, long creationTimestamp) {}
+    + long getId() {}
+    + long getProjectId() {}
+    + long getCreationTimestamp() {}
+    + void setId(long pId) {}
+    - void setProjectId(long projectId) {}
+    + Project getProject() {}
+    + String getName() {}
+    - void setName(@NonNull String name){}
+    - void setCreationTimestamp(long creationTimestamp){}
+    + {static} class TaskAZComparator implements Comparator<Task> {}
+    + {static} class TaskZAComparator implements Comparator<Task> {}
+    + {static} class TaskRecentComparator implements Comparator<Task> {}
+    + {static} class TaskOldComparator implements Comparator<Task> {}
+
+}
+class ProjectDataRepository{
+    - ProjectDao mProjectDao
+    + ProjectDataRepository(ProjectDao mProjectDao) {}
+    + LiveData<List<Project>> getProjects() {}
+}
+class TaskDataRepository{
+    - TaskDao  mTaskDao
+    + TaskDataRepository(TaskDao mTaskDao) {}
+    + LiveData<List<Task>> getTasks() {}
+    + void createTask(Task mTask) {}
+    + void deleteTask(Task mTask) {}
+}
+class MainActivity{
+    - List<Project> allProjects
+    - TaskViewModel mTaskViewModel
+    - final TasksAdapter adapter = new TasksAdapter(new ArrayList<>(), this);
+    - SortMethod sortMethod = SortMethod.NONE;
+    + AlertDialog dialog = null;
+    - EditText dialogEditText = null;
+    - Spinner dialogSpinner = null;
+    - RecyclerView listTasks;
+    - TextView lblNoTasks;
+    + void onCreate(@Nullable Bundle savedInstanceState) {}
+    - void configureViewModel()
+    - void getProjects()
+    - void updateProjects(List<Project> projects)
+    - void getTasks()
+    + boolean onCreateOptionsMenu(Menu menu)
+    + boolean onOptionsItemSelected(MenuItem item)
+    + void onDeleteTask(Task task)
+    - void onPositiveButtonClick(DialogInterface dialogInterface)
+    - void showAddTaskDialog()
+    - void addTask(@NonNull Task task)
+    - void updateTasks(List<Task> tasks)
+    - AlertDialog getAddTaskDialog()
+    - void populateDialogSpinner()
+    - void populateDialogSpinner()
+    - enum SortMethod
+}
+class TaskAdapter{
+    - List<Task> tasks
+    - final DeleteTaskListener deleteTaskListener;
+    TasksAdapter(@NonNull final List<Task> tasks, @NonNull final DeleteTaskListener deleteTaskListener)
+    void updateTasks(@NonNull final List<Task> tasks)
+    + TaskViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType)
+    + void onBindViewHolder(@NonNull TaskViewHolder taskViewHolder, int position)
+    + int getItemCount()
+    + interface DeleteTaskListener
+
+    class TaskViewHolder extends RecyclerView.ViewHolder
+
+}
+class TaskViewModel{
+     - final ProjectDataRepository mProjectDataSource;
+     - final TaskDataRepository mTaskDataSource;
+     - final Executor mExecutor;
+     - LiveData<List<Project>> mProjects;
+     + TaskViewModel(ProjectDataRepository mProjectDataSource, TaskDataRepository mTaskDataSource, Executor mExecutor)
+     + void init()
+     + LiveData<List<Project>> getProjects()
+     + LiveData<List<Task>> getTasks()
+     + void createTask(Task task)
+     + void deleteTask(Task task)
+}
 
 @enduml
