@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(AndroidJUnit4.class)
 public class TaskDaoTest {
@@ -41,12 +42,13 @@ public class TaskDaoTest {
 
 
 
+
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     @Before
     public void initDb() throws Exception {
-        //todo: check deprecated params --DONE
+
         Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         this.mDatabase = Room.inMemoryDatabaseBuilder(context,
                TodocDatabase.class)
@@ -60,7 +62,13 @@ public class TaskDaoTest {
     }
 
     @Test
-    public void insertTask() throws InterruptedException{
+    public void insertTaskAndProject() throws InterruptedException{
+        mDatabase.ProjectDao().insertProject(mListProjects[0]);
+
+        mProjects = LiveDataTestUtil.getValue(mDatabase.ProjectDao().getProjects());
+        assertEquals(1, mProjects.size());
+        assertEquals(mProjects.get(0).getName(), mListProjects[0].getName());
+
         mDatabase.TaskDao().insertTask(mTaskTest1);
 
         mTasks = LiveDataTestUtil.getValue(mDatabase.TaskDao().getTasks());
@@ -72,6 +80,11 @@ public class TaskDaoTest {
 
     @Test
     public void deleteTasks() throws InterruptedException {
+        mDatabase.ProjectDao().insertProject(mListProjects[0]);
+        mDatabase.ProjectDao().insertProject(mListProjects[1]);
+
+        mProjects = LiveDataTestUtil.getValue(mDatabase.ProjectDao().getProjects());
+
         mDatabase.TaskDao().insertTask(mTaskTest1);
         mDatabase.TaskDao().insertTask(mTaskTest2);
 
@@ -92,7 +105,4 @@ public class TaskDaoTest {
         assertEquals(mProjects.get(1).getName(), mTaskTest2.getProject().getName());
     }
 
-    //todo: finish checkProject Test
-    @Test
-    public void checkProject(){}
 }
