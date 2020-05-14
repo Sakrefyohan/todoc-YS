@@ -1,11 +1,11 @@
-package com.cleanup.todocYS.injection;
+package com.cleanup.todocYSOCR.injection;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cleanup.todocYS.repositories.ProjectDataRepository;
-import com.cleanup.todocYS.repositories.TaskDataRepository;
-import com.cleanup.todocYS.viewmodel.TaskViewModel;
+import com.cleanup.todocYSOCR.repositories.ProjectDataRepository;
+import com.cleanup.todocYSOCR.repositories.TaskDataRepository;
+import com.cleanup.todocYSOCR.viewmodel.TaskViewModel;
 
 import java.util.concurrent.Executor;
 

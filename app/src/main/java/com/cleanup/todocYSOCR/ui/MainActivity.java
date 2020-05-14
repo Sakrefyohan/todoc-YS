@@ -1,14 +1,7 @@
-package com.cleanup.todocYS.ui;
+package com.cleanup.todocYSOCR.ui;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,12 +11,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.cleanup.todocYS.R;
-import com.cleanup.todocYS.injection.Injection;
-import com.cleanup.todocYS.injection.ViewModelFactory;
-import com.cleanup.todocYS.model.Project;
-import com.cleanup.todocYS.model.Task;
-import com.cleanup.todocYS.viewmodel.TaskViewModel;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+import com.cleanup.todocYSOCR.injection.Injection;
+import com.cleanup.todocYSOCR.injection.ViewModelFactory;
+import com.cleanup.todocYSOCR.model.Project;
+import com.cleanup.todocYSOCR.model.Task;
+import com.cleanup.todocYSOCR.viewmodel.TaskViewModel;
+import com.cleanupYS.todoc.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

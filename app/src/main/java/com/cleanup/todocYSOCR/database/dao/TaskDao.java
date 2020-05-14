@@ -1,4 +1,4 @@
-package com.cleanup.todocYS.database.dao;
+package com.cleanup.todocYSOCR.database.dao;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.cleanup.todocYS.model.Task;
+import com.cleanup.todocYSOCR.model.Task;
 
 import java.util.List;
 

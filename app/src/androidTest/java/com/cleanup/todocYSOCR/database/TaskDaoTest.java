@@ -1,4 +1,4 @@
-package com.cleanup.todocYS.database;
+package com.cleanup.todocYSOCR.database;
 
 
 import android.content.Context;
@@ -11,8 +11,8 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 
-import com.cleanup.todocYS.model.Project;
-import com.cleanup.todocYS.model.Task;
+import com.cleanup.todocYSOCR.model.Project;
+import com.cleanup.todocYSOCR.model.Task;
 
 import org.junit.After;
 import org.junit.Before;

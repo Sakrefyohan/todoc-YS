@@ -1,6 +1,6 @@
-package com.cleanup.todocYS;
+package com.cleanup.todocYSOCR;
 
-import com.cleanup.todocYS.model.Task;
+import com.cleanup.todocYSOCR.model.Task;
 
 import org.junit.Test;
 

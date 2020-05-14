@@ -1,4 +1,4 @@
-package com.cleanup.todocYS.model;
+package com.cleanup.todocYSOCR.model;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

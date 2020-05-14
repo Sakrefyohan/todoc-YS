@@ -1,4 +1,4 @@
-package com.cleanup.todocYS.database;
+package com.cleanup.todocYSOCR.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,10 +10,10 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.cleanup.todocYS.database.dao.ProjectDao;
-import com.cleanup.todocYS.database.dao.TaskDao;
-import com.cleanup.todocYS.model.Project;
-import com.cleanup.todocYS.model.Task;
+import com.cleanup.todocYSOCR.database.dao.ProjectDao;
+import com.cleanup.todocYSOCR.database.dao.TaskDao;
+import com.cleanup.todocYSOCR.model.Project;
+import com.cleanup.todocYSOCR.model.Task;
 
 @Database(entities = {Project.class, Task.class}, version = 1, exportSchema = false)
 public abstract class TodocDatabase extends RoomDatabase {

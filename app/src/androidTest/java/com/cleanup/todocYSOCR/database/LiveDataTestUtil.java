@@ -1,4 +1,4 @@
-package com.cleanup.todocYS.database;
+package com.cleanup.todocYSOCR.database;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;

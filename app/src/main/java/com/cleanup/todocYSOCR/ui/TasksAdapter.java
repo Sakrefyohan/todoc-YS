@@ -1,4 +1,4 @@
-package com.cleanup.todocYS.ui;
+package com.cleanup.todocYSOCR.ui;
 
 import android.content.res.ColorStateList;
 import androidx.annotation.NonNull;
@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.cleanup.todocYS.R;
-import com.cleanup.todocYS.model.Project;
-import com.cleanup.todocYS.model.Task;
+
+import com.cleanup.todocYSOCR.model.Project;
+import com.cleanup.todocYSOCR.model.Task;
+import com.cleanupYS.todoc.R;
 
 import java.util.List;
 

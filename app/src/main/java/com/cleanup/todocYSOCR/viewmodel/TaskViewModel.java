@@ -1,13 +1,13 @@
-package com.cleanup.todocYS.viewmodel;
+package com.cleanup.todocYSOCR.viewmodel;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.cleanup.todocYS.model.Project;
-import com.cleanup.todocYS.model.Task;
-import com.cleanup.todocYS.repositories.ProjectDataRepository;
-import com.cleanup.todocYS.repositories.TaskDataRepository;
+import com.cleanup.todocYSOCR.model.Project;
+import com.cleanup.todocYSOCR.model.Task;
+import com.cleanup.todocYSOCR.repositories.ProjectDataRepository;
+import com.cleanup.todocYSOCR.repositories.TaskDataRepository;
 
 import java.util.List;
 import java.util.concurrent.Executor;

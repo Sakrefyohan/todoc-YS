@@ -1,4 +1,4 @@
-package com.cleanup.todocYS;
+package com.cleanup.todocYSOCR;
 
 import androidx.annotation.IdRes;
 import androidx.test.espresso.PerformException;

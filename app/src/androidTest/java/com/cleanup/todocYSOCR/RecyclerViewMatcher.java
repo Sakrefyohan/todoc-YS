@@ -1,4 +1,4 @@
-package com.cleanup.todocYS;
+package com.cleanup.todocYSOCR;
 
 import android.content.res.Resources;
 import androidx.recyclerview.widget.RecyclerView;
