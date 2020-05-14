@@ -1,4 +1,4 @@
-package com.cleanup.todoc.model;
+package com.cleanup.todocYS.model;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

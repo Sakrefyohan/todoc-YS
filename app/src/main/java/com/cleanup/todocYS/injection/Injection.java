@@ -1,10 +1,10 @@
-package com.cleanup.todoc.injection;
+package com.cleanup.todocYS.injection;
 
 import android.content.Context;
 
-import com.cleanup.todoc.database.TodocDatabase;
-import com.cleanup.todoc.repositories.ProjectDataRepository;
-import com.cleanup.todoc.repositories.TaskDataRepository;
+import com.cleanup.todocYS.database.TodocDatabase;
+import com.cleanup.todocYS.repositories.ProjectDataRepository;
+import com.cleanup.todocYS.repositories.TaskDataRepository;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

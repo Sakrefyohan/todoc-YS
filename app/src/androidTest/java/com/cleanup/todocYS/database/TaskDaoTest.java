@@ -1,8 +1,7 @@
-package com.cleanup.todoc.database;
+package com.cleanup.todocYS.database;
 
 
 import android.content.Context;
-import android.view.contentcapture.DataRemovalRequest;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.room.Room;
@@ -12,8 +11,8 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 
-import com.cleanup.todoc.model.Project;
-import com.cleanup.todoc.model.Task;
+import com.cleanup.todocYS.model.Project;
+import com.cleanup.todocYS.model.Task;
 
 import org.junit.After;
 import org.junit.Before;

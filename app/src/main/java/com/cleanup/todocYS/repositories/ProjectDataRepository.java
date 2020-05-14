@@ -1,9 +1,9 @@
-package com.cleanup.todoc.repositories;
+package com.cleanup.todocYS.repositories;
 
 import androidx.lifecycle.LiveData;
 
-import com.cleanup.todoc.database.dao.ProjectDao;
-import com.cleanup.todoc.model.Project;
+import com.cleanup.todocYS.database.dao.ProjectDao;
+import com.cleanup.todocYS.model.Project;
 
 import java.util.List;
 

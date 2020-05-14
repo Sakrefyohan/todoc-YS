@@ -1,5 +1,3 @@
-# OpenClassrooms
-
 # Todoc - Yohan Sakref
 
 This repository contains a mini-application for the Project 5 from OpenClassrooms course. Modified by me.
@@ -20,7 +18,8 @@ Features created :
     - retrieve the list of tasks contained in the database
 
 ## The App :
-==============
+==================
+
 Adresse GitHub du programme :
 -----------------------------
     https://github.com/Sakrefyohan/todoc-YS.git
