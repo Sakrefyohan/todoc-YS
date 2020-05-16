@@ -39,7 +39,7 @@ Tests added:
 Execution and results of unit tests :
 -------------------------------------------
 
-    In the repository: todoc/app/src/androidTest/java/com/cleanup/todocflb/database
+    In the repository: todoc/app/src/androidTest/java/ys/cleanupys/todocys/database 
     Special feature: this unit test is stored and executed in the repertoire of instrumentalized tests.
     because the test is executed via the Android device even if you are not testing eyesight.
 

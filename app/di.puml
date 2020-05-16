@@ -2,11 +2,15 @@
 
 
 MainActivity o-- TaskViewModel
+Project --o MainActivity
+Task --o TaskAdapter
 TaskDataRepository o-- TaskDao
 ProjectDataRepository o-- ProjectDao
 TodocDatabase o-- TodocDatabase
 ViewModelFactory o-- ProjectDataRepository
 ViewModelFactory o-- TaskDataRepository
+TaskViewModel o-left- ProjectDataRepository
+TaskViewModel o-left- TaskDataRepository
 TaskAdapter --o MainActivity
 
 
